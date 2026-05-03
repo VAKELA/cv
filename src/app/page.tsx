@@ -8,6 +8,7 @@ import { Education } from "@/components/Education";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { FloatingContact } from "@/components/FloatingContact";
+import { SectionNav } from "@/components/SectionNav";
 import { useI18n } from "@/components/I18nProvider";
 import { content } from "@/data/content";
 
@@ -49,17 +50,13 @@ export default function Home() {
     <I18nProvider>
       <a href="#main-content" className="skip-link">Skip to content</a>
       <Background />
+      <SectionNav />
       <main id="main-content">
         <Hero />
-        <hr className="section-divider" />
         <About id="about" />
-        <hr className="section-divider" />
         <Education id="education" />
-        <hr className="section-divider" />
         <Experience id="experience" />
-        <hr className="section-divider" />
         <Skills id="skills" />
-        <hr className="section-divider" />
         <ContactSection />
       </main>
       <FloatingContact />
