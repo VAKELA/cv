@@ -8,6 +8,7 @@ const sectionIds = ["about", "education", "experience", "skills", "contact"];
 export function SectionNav() {
   const { t } = useI18n();
   const [activeSection, setActiveSection] = useState<string>("about");
+  const [visible, setVisible] = useState(false);
 
   const labels: Record<string, string> = {
     about: t.hero.nav.about,
@@ -16,6 +17,16 @@ export function SectionNav() {
     skills: t.hero.nav.skills,
     contact: t.hero.nav.contact,
   };
+
+  useEffect(() => {
+    // Show sidebar only after scrolling past the hero
+    const onScroll = () => {
+      setVisible(window.scrollY > window.innerHeight * 0.6);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +45,20 @@ export function SectionNav() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    // Also detect bottom-of-page → activate contact
+    const onScroll = () => {
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+      if (atBottom) {
+        setActiveSection("contact");
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -46,7 +70,10 @@ export function SectionNav() {
   };
 
   return (
-    <nav className="section-nav" aria-label="Section navigation">
+    <nav
+      className={`section-nav${visible ? " section-nav--visible" : ""}`}
+      aria-label="Section navigation"
+    >
       {sectionIds.map((id) => (
         <button
           key={id}
