@@ -41,7 +41,7 @@ export function FloatingContact() {
             duration: 0.4,
             ease: [0.25, 0.1, 0.25, 1],
           }}
-          whileHover={{ scale: 1.12, y: -2 }}
+          whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
         >
           <svg viewBox="0 0 24 24" fill="currentColor">

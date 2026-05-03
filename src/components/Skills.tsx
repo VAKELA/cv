@@ -105,6 +105,7 @@ export function Skills({ id }: SkillsProps) {
                     variants={tagVariants}
                     whileHover={{
                       scale: 1.04,
+                      y: -1,
                       transition: { duration: 0.2 },
                     }}
                   >

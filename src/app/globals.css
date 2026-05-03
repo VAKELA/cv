@@ -29,7 +29,7 @@
   --font-heading: var(--font-syne), system-ui, sans-serif;
   
   /* Spacing */
-  --section-padding: 80px;
+  --section-padding: 56px;
   --container-width: 920px;
   
   /* Animation */
@@ -73,6 +73,12 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: inherit;
 }
 
 ::selection {
@@ -155,8 +161,8 @@ a {
 }
 
 .section-nav-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--text-muted);
   flex-shrink: 0;
@@ -169,17 +175,18 @@ a {
 }
 
 .section-nav-label {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text-secondary);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   white-space: nowrap;
   transition: color 0.3s var(--ease-smooth);
 }
 
 .section-nav-item--active .section-nav-label {
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ===== BACKGROUND ===== */
@@ -223,7 +230,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.25em;
   color: var(--accent);
-  margin-bottom: 48px;
+  margin-bottom: 36px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -445,12 +452,13 @@ a {
   border-radius: 16px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
 }
 
 .education-card:hover {
   border-color: var(--border-light);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
 .education-logo {
@@ -533,7 +541,7 @@ a {
   border-radius: 16px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-smooth);
+  transition: border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
 }
 
 .experience-card:hover {
@@ -707,7 +715,6 @@ a {
   background: var(--accent-dim);
   border-color: var(--border-accent);
   color: var(--accent);
-  transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(198, 172, 143, 0.08);
 }
 
@@ -716,7 +723,7 @@ a {
 .contact-section {
   text-align: center;
   min-height: auto;
-  padding-bottom: 160px;
+  padding-bottom: 100px;
 }
 
 .contact-headline {
@@ -749,7 +756,7 @@ a {
   gap: 10px;
   padding: 14px 28px;
   background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   font-size: 15px;
   color: var(--text-secondary);
@@ -815,7 +822,7 @@ a {
 
 @media (max-width: 640px) {
   :root {
-    --section-padding: 60px;
+    --section-padding: 48px;
   }
   
   .hero {
@@ -927,6 +934,12 @@ a {
     height: 44px;
   }
   
+  .section-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
   .section-nav {
     display: none;
   }

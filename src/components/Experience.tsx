@@ -50,7 +50,6 @@ export function Experience({ id }: ExperienceProps) {
               key={index}
               className="experience-card"
               variants={itemVariants}
-              whileHover={{ y: -2 }}
             >
               <div className="experience-timeline-dot" />
 
