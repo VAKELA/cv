@@ -1,5 +1,3 @@
-import { content } from "@/data/content";
-
 export type Language = "en" | "es";
 
 export const translations = {
@@ -11,10 +9,12 @@ export const translations = {
       pitch: "Full Stack Developer | AI, Data Science & Machine Learning",
       nav: {
         about: "About",
+        education: "Education",
         experience: "Experience",
         skills: "Skills",
         contact: "Contact",
       },
+      scroll: "Scroll",
     },
     about: {
       title: "About",
@@ -38,6 +38,7 @@ export const translations = {
     },
     contact: {
       title: "Contact",
+      headline: "Let's connect",
     },
   },
   es: {
@@ -48,10 +49,12 @@ export const translations = {
       pitch: "Full Stack Developer | AI, Data Science & Machine Learning",
       nav: {
         about: "Sobre Mí",
+        education: "Educación",
         experience: "Experiencia",
         skills: "Habilidades",
         contact: "Contacto",
       },
+      scroll: "Desplazar",
     },
     about: {
       title: "Sobre Mí",
@@ -75,6 +78,7 @@ export const translations = {
     },
     contact: {
       title: "Contacto",
+      headline: "Conectemos",
     },
   },
 } as const;
