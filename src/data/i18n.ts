@@ -2,86 +2,102 @@ export type Language = "en" | "es";
 
 export const translations = {
   en: {
+    nav: {
+      work: "Work",
+      experience: "Experience",
+      about: "About",
+      skills: "Skills",
+      contact: "Contact",
+    },
     hero: {
-      title: "Computer Science Engineer",
-      major: "Major: Software",
-      minor: "Minor: Data Science",
-      pitch: "Full Stack Developer | AI, Data Science & Machine Learning",
-      nav: {
-        about: "About",
-        education: "Education",
-        experience: "Experience",
-        skills: "Skills",
-        contact: "Contact",
-      },
-      scroll: "Scroll",
+      kicker: "Santiago, Chile",
+      tagline: "Full Stack · AI Systems · Software Architecture",
+      bio: "Full Stack Developer | AI, Data Science & Machine Learning.",
+      cta: "Get in touch",
+    },
+    stats: {
+      title: "Numbers",
+      subtitle: "Three years. Three industries. Many systems built.",
     },
     about: {
-      title: "About",
-      text: "Computer Science Engineer with 3+ years of experience in full-stack development. Major in Software, Minor in Data Science. Proven track record in building and maintaining production-grade systems, optimizing performance, and improving developer experience.",
+      kicker: "About",
+      title: "An engineer who reads the system before writing the code.",
     },
     experience: {
-      title: "Experience",
+      kicker: "Experience",
+      title: "Where I've put in the hours.",
     },
     skills: {
-      title: "Skills",
-      languages: "Languages",
-      frontend: "Frontend",
-      backend: "Backend",
-      databases: "Databases",
+      kicker: "Skills",
+      title: "What I use.",
+      subtitle: "Languages, frameworks and methods I actually use.",
     },
-    education: {
-      title: "Education",
-      degree: "Civil Engineering in Computer Science",
-      major: "Major in Software",
-      minor: "Minor in Data Science",
+    selected: {
+      kicker: "Selected Work",
+      subtitle: "One sentence each. The full stories live in conversations.",
     },
     contact: {
-      title: "Contact",
-      headline: "Let's connect",
+      kicker: "Get in touch",
+      title: "Let's build something.",
+      sub: "Open to conversations about senior engineering work.",
+      emailLabel: "Email",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+    },
+    footer: {
+      copy: "© Vicente Akel",
+      built: "Built in Next.js · Deployed on Vercel",
     },
   },
   es: {
+    nav: {
+      work: "Trabajo",
+      experience: "Experiencia",
+      about: "Sobre mí",
+      skills: "Skills",
+      contact: "Contacto",
+    },
     hero: {
-      title: "Ingeniero Civil en Computación",
-      major: "Major: Software",
-      minor: "Minor: Data Science",
-      pitch: "Full Stack Developer | AI, Data Science & Machine Learning",
-      nav: {
-        about: "Sobre Mí",
-        education: "Educación",
-        experience: "Experiencia",
-        skills: "Habilidades",
-        contact: "Contacto",
-      },
-      scroll: "Desplazar",
+      kicker: "Santiago, Chile",
+      tagline: "Full Stack · Sistemas de IA · Arquitectura de software",
+      bio: "Full Stack Developer | AI, Data Science & Machine Learning.",
+      cta: "Conversemos",
+    },
+    stats: {
+      title: "Números",
+      subtitle: "Tres años. Tres industrias. Muchos sistemas construidos.",
     },
     about: {
-      title: "Sobre Mí",
-      text: "Ingeniero Civil en Computación con más de 3 años de experiencia en desarrollo full-stack. Major en Software, Minor en Data Science. Trayectoria comprobada en la construcción y mantenimiento de sistemas de grado de producción, optimización del rendimiento y mejora de la experiencia del desarrollador.",
+      kicker: "Sobre mí",
+      title: "Un ingeniero que lee el sistema antes de escribir el código.",
     },
     experience: {
-      title: "Experiencia",
+      kicker: "Experiencia",
+      title: "Dónde he puesto las horas.",
     },
     skills: {
-      title: "Habilidades",
-      languages: "Lenguajes",
-      frontend: "Frontend",
-      backend: "Backend",
-      databases: "Bases de Datos",
+      kicker: "Skills",
+      title: "Lo que uso.",
+      subtitle: "Lenguajes, frameworks y métodos que realmente uso.",
     },
-    education: {
-      title: "Educación",
-      degree: "Ingeniería Civil en Computación",
-      major: "Major en Software",
-      minor: "Minor en Data Science",
+    selected: {
+      kicker: "Trabajo seleccionado",
+      subtitle: "Una oración cada una. Las historias viven en las conversaciones.",
     },
     contact: {
-      title: "Contacto",
-      headline: "Conectemos",
+      kicker: "Contacto",
+      title: "Construyamos algo.",
+      sub: "Abierto a conversar sobre trabajo de ingeniería senior.",
+      emailLabel: "Email",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+    },
+    footer: {
+      copy: "© Vicente Akel",
+      built: "Construido en Next.js · Desplegado en Vercel",
     },
   },
-} as const;
+};
 
 export function getTranslations(lang: Language) {
   return translations[lang];

@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { getTranslations, Language } from "@/data/i18n";
 
 type TranslationType = ReturnType<typeof getTranslations>;
@@ -19,7 +25,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const saved = localStorage.getItem("language") as Language | null;
     const browserLang = navigator.language.split("-")[0];
-    const defaultLang: Language = saved ?? (browserLang === "es" ? "es" : "en");
+    const defaultLang: Language =
+      saved === "en" || saved === "es"
+        ? saved
+        : browserLang === "es"
+          ? "es"
+          : "en";
     setLanguageState(defaultLang); // eslint-disable-line react-hooks/set-state-in-effect
     document.documentElement.lang = defaultLang;
   }, []);

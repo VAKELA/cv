@@ -1,87 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useI18n } from "./I18nProvider";
 import { content } from "@/data/content";
 
-interface ExperienceProps {
-  id?: string;
-}
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const },
-    },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: EASE },
+  },
 };
 
-export function Experience({ id }: ExperienceProps) {
-  const { t } = useI18n();
+export function Experience() {
+  const { t, language } = useI18n();
   const { experience } = content;
 
   return (
-    <section id={id} className="section experience" tabIndex={-1}>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={containerVariants}
-      >
-        <motion.h2 className="section-title" variants={itemVariants}>
-          {t.experience.title}
-        </motion.h2>
+    <section className="experience" id="experience">
+      <div className="container">
+        <motion.div
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span className="section-kicker" variants={itemVariants}>
+            {t.experience.kicker}
+          </motion.span>
+          <motion.h2 className="section-title" variants={itemVariants}>
+            {t.experience.title}
+          </motion.h2>
+        </motion.div>
 
-        <div className="experience-list">
-          {experience.map((job, index) => (
-            <motion.div
-              key={index}
-              className="experience-card"
+        <motion.div
+          className="experience-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={containerVariants}
+        >
+          {experience.map((job) => (
+            <motion.article
+              key={job.company}
+              className={`experience-card${job.highlight ? " experience-card--highlight" : ""}`}
               variants={itemVariants}
             >
-              <div className="experience-timeline-dot" />
-
-              <div className="experience-header">
-                <h3 className="experience-role">{job.role}</h3>
-                <span className="experience-period">{job.period}</span>
-              </div>
-
-              <div className="experience-company-row">
-                <div className="experience-company-logo">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={job.logo}
-                    alt={job.company}
-                    width={24}
-                    height={24}
-                  />
-                </div>
+              <div className="experience-meta">
                 <span className="experience-company">{job.company}</span>
+                <span className="experience-period">{job.period[language]}</span>
               </div>
 
-              {job.level && <p className="experience-level">{job.level}</p>}
+              <div className="experience-content">
+                <h3 className="experience-role">{job.role[language]}</h3>
+                <p className="experience-focus">{job.focus[language]}</p>
+                <ul className="experience-bullets">
+                  {job.bullets[language].map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
 
-              <ul className="experience-bullets">
-                {job.bullets.map((bullet, i) => (
-                  <li key={i}>{bullet}</li>
-                ))}
-              </ul>
-            </motion.div>
+              <div className="experience-meta">
+                <span className="experience-period">{job.type[language]}</span>
+                <span className="experience-period">{job.location}</span>
+              </div>
+            </motion.article>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
